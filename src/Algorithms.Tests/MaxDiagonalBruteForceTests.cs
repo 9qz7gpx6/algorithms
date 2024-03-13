@@ -63,19 +63,6 @@ namespace Algorithms.Tests
         }
 
         [Test]
-
-        public void MaxDiagonalSum_MatrixWithSingleElement_ReturnsElementValue()
-        {
-            // Arrange
-            int[][] matrix = new int[][]
-            {
-            new int[] { 5 }
-            };
-            Assert.Throws<ArgumentException>(() => new MaxDiagonalBruteForce(matrix),"Invalid matrix");
-           
-        }
-
-        [Test]
         public void MaxDiagonalSum_MatrixWithZeroes_ReturnsZero()
         {
             // Arrange
@@ -94,35 +81,13 @@ namespace Algorithms.Tests
             Assert.AreEqual(0, result);
         }
 
-        [Test]
-        public void MaxDiagonalSum_EmptyMatrix_ReturnsMinValue()
-        {
-            // Arrange
-            int[][] matrix = new int[0][];
-            MaxDiagonalBruteForce maxDiagonal = new MaxDiagonalBruteForce(matrix);
-
-            // Act
-            int result = maxDiagonal.MaxDiagonalSum();
-
-            // Assert
-            Assert.AreEqual(int.MinValue, result);
-        }
 
         [Test]
-        public void MaxDiagonalSum_MatrixWithSingleRow_ReturnsMinValue()
+        public void MaxDiagonalSum_MatrixWithSingleRow_ThrowsArgumentEx()
         {
-            // Arrange
-            int[][] matrix = new int[][]
-            {
-        new int[] { 1, 2, 3 }
-            };
-            MaxDiagonalBruteForce maxDiagonal = new MaxDiagonalBruteForce(matrix);
-
-            // Act
-            int result = maxDiagonal.MaxDiagonalSum();
-
-            // Assert
-            Assert.AreEqual(int.MinValue, result);
+            Assert.Throws<ArgumentException>(() => new MaxDiagonalBruteForce([[1, 2, 3]]), "Invalid matrix");
+            Assert.Throws<ArgumentException>(() => new MaxDiagonalBruteForce([[1]]), "Invalid matrix");
+            Assert.Throws<ArgumentException>(() => new MaxDiagonalBruteForce([]), "Invalid matrix");
         }
 
         [Test]
