@@ -1,0 +1,20 @@
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
+**/bin/Debug/
+**/bin/Release/
+/src/algorithms/BenchmarkDotNet.Artifacts
+/src/algorithms/obj
+/.vs/Algorithms
+/.vscode
+/src/Algorithms.Benchmark/obj/Debug/net8.0
+/src/Algorithms.Tests/obj
