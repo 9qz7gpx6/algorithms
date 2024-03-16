@@ -21,7 +21,7 @@ namespace Algorithms.Tests
             int result = maxDiagonal.MaxDiagonalSum();
 
             // Assert
-            Assert.AreEqual(14, result);
+            Assert.That(result, Is.EqualTo(14));
         }
 
         [Test]
@@ -40,7 +40,7 @@ namespace Algorithms.Tests
             int result = maxDiagonal.MaxDiagonalSum();
 
             // Assert
-            Assert.AreEqual(-6, result);
+            Assert.That(result, Is.EqualTo(-6));
         }
 
         [Test]
@@ -59,7 +59,7 @@ namespace Algorithms.Tests
             int result = maxDiagonal.MaxDiagonalSum();
 
             // Assert
-            Assert.AreEqual(14, result);
+            Assert.That(result, Is.EqualTo(14));
         }
 
         [Test]
@@ -78,7 +78,7 @@ namespace Algorithms.Tests
             int result = maxDiagonal.MaxDiagonalSum();
 
             // Assert
-            Assert.AreEqual(0, result);
+            Assert.That(result, Is.EqualTo(0));
         }
 
 
@@ -106,7 +106,7 @@ namespace Algorithms.Tests
             int result = maxDiagonal.MaxDiagonalSum();
 
             // Assert
-            Assert.AreEqual(14, result);
+            Assert.That(result, Is.EqualTo(14));
         }
     }
 

@@ -24,52 +24,76 @@ namespace Algorithms.LargestSum
         public int MaxDiagonalSum()
         {
             int maxSum = int.MinValue;
-            int n = matrix.Length;
+            Coordinate coord1 = new(0, 0);
+            Coordinate coord2 = new(0, 0);
+
             int m = matrix[0].Length;
             int f1, f2;
-            int nextLine = 0;
-            int tracker = 0;
-            for (int i = 0; i < n; i++)
+            int[] lineF1, lineF2;
+            int currentSum = 0;
+            for (int l1 = 0; l1 < matrix.Length; l1++)
             {
-                nextLine += i;
+                lineF1 = matrix[l1];
 
-                for (int j = 0; j < m; j++)
+                for (int l2 = 0; l2 < matrix.Length; l2++)
                 {
-                    for (int x = 0; x < n; x++)
+                    if (l1 == l2)
                     {
-                        for (int y = 0; y < m; y++)
-                        {
-                            if ((i != x || j != y) && !(i == x || j == y))
-                            {
-                                try
-                                {
-                                    //if (i >= matrix.Length || j >= matrix[i].Length) continue;
-                                    //if (x >= matrix.Length && y >= matrix[x].Length) continue;
+#if DEBUG
+                        Console.WriteLine(string.Format("Skip line: {0}", l2));
+#endif
+                        continue;
+                    }
+                    lineF2 = matrix[l2];
 
-                                    f1 = matrix[i][j];
-                                    tracker = 1;
-                                    f2 = matrix[x][y];
-                                    maxSum = Math.Max(maxSum, f1 + f2);
-                                }
-                                catch (Exception ex)
-                                {
-                                    ex.Data.Add("i", i);
-                                    ex.Data.Add("j", j);
-                                    ex.Data.Add("x", x);
-                                    ex.Data.Add("y", y);
-                                    ex.Data.Add("tracker", tracker);
-                                    ex.Data.Add("matrix", matrix);
-                                    throw;
-                                }
+                    for (int c1 = 0; c1 < lineF1.Length; c1++)
+                    {
+                        f1 = lineF1[c1];
+
+                        for (int c2 = 0; c2 < lineF2.Length && c1 != c2; c2++)
+                        {
+                            if (c1 == c2)
+                            {
+#if DEBUG
+                                Console.WriteLine(string.Format("Skip column: {0}", c2));
+#endif
+                                continue;
                             }
+
+                            f2 = lineF2[c2];
+                            currentSum = f1 + f2;
+                            if (currentSum > maxSum)
+                            {
+                                maxSum = currentSum;
+                                coord1.Line = l1;
+                                coord1.Column = c1;
+                                coord2.Line = l2;
+                                coord2.Column = c2;
+                            }
+#if DEBUG
+                            Console.WriteLine(string.Format("f1:({0},{1}) = {2}", l1, c1, f1));
+                            Console.WriteLine(string.Format("f1:({0},{1}) = {2} ", l1, c1, f1));
+                            Console.WriteLine(string.Format("sm:({0}+{1}) = {2}", f1, f2, currentSum));
+#endif
                         }
                     }
+
                 }
             }
-
             return maxSum;
         }
+        public class Coordinate
+        {
+            public Coordinate(int line, int column)
+            {
+                Line = line;
+                Column = column;
+            }
+
+            public int Line { get; set; }
+            public int Column { get; set; }
+
+        }
+
     }
-
-
 }
