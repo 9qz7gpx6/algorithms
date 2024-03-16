@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Algorithms.LargestSum
 {
     // O(n^4)
-    public class MaxDiagonalBruteForce
+    public partial class MaxDiagonalBruteForce : ILargestSum
     {
         private int[][] matrix;
 
@@ -21,11 +21,11 @@ namespace Algorithms.LargestSum
         }
 
 
-        public int MaxDiagonalSum()
+        public (int sum, MatrixPosition matrixPosition1, MatrixPosition matrixPosition2) MaxDiagonalSum()
         {
             int maxSum = int.MinValue;
-            Coordinate coord1 = new(0, 0);
-            Coordinate coord2 = new(0, 0);
+            MatrixPosition matrixPosition1 = new(0, 0, 0);
+            MatrixPosition matrixPosition2 = new(0, 0, 0);
 
             int m = matrix[0].Length;
             int f1, f2;
@@ -65,10 +65,13 @@ namespace Algorithms.LargestSum
                             if (currentSum > maxSum)
                             {
                                 maxSum = currentSum;
-                                coord1.Line = l1;
-                                coord1.Column = c1;
-                                coord2.Line = l2;
-                                coord2.Column = c2;
+                                matrixPosition1.Line = l1;
+                                matrixPosition1.Column = c1;
+                                matrixPosition1.Value = f1;
+
+                                matrixPosition2.Line = l2;
+                                matrixPosition2.Column = c2;
+                                matrixPosition2.Value = f2;
                             }
 #if DEBUG
                             Console.WriteLine(string.Format("f1:({0},{1}) = {2}", l1, c1, f1));
@@ -80,20 +83,7 @@ namespace Algorithms.LargestSum
 
                 }
             }
-            return maxSum;
+            return (maxSum, matrixPosition1, matrixPosition2);
         }
-        public class Coordinate
-        {
-            public Coordinate(int line, int column)
-            {
-                Line = line;
-                Column = column;
-            }
-
-            public int Line { get; set; }
-            public int Column { get; set; }
-
-        }
-
     }
 }
