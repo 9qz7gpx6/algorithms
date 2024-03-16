@@ -37,13 +37,7 @@ namespace Algorithms.LargestSum
 
                 for (int l2 = 0; l2 < matrix.Length; l2++)
                 {
-                    if (l1 == l2)
-                    {
-#if DEBUG
-                        Console.WriteLine(string.Format("Skip line: {0}", l2));
-#endif
-                        continue;
-                    }
+                    if (l1 == l2) continue;
                     lineF2 = matrix[l2];
 
                     for (int c1 = 0; c1 < lineF1.Length; c1++)
@@ -52,16 +46,11 @@ namespace Algorithms.LargestSum
 
                         for (int c2 = 0; c2 < lineF2.Length && c1 != c2; c2++)
                         {
-                            if (c1 == c2)
-                            {
-#if DEBUG
-                                Console.WriteLine(string.Format("Skip column: {0}", c2));
-#endif
-                                continue;
-                            }
+                            if (c1 == c2) continue;
 
                             f2 = lineF2[c2];
                             currentSum = f1 + f2;
+
                             if (currentSum > maxSum)
                             {
                                 maxSum = currentSum;
@@ -73,14 +62,8 @@ namespace Algorithms.LargestSum
                                 matrixPosition2.Column = c2;
                                 matrixPosition2.Value = f2;
                             }
-#if DEBUG
-                            Console.WriteLine(string.Format("f1:({0},{1}) = {2}", l1, c1, f1));
-                            Console.WriteLine(string.Format("f1:({0},{1}) = {2} ", l1, c1, f1));
-                            Console.WriteLine(string.Format("sm:({0}+{1}) = {2}", f1, f2, currentSum));
-#endif
                         }
                     }
-
                 }
             }
             return (maxSum, matrixPosition1, matrixPosition2);
