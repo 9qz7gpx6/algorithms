@@ -19,3 +19,6 @@
 /src/Algorithms.Benchmark/obj/Debug/net8.0
 /src/Algorithms.Tests/obj
 /.vs/ProjectEvaluation
+/src/Algorithms.Benchmark/obj
+*.txt
+*.log
