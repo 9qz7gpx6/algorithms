@@ -22,3 +22,5 @@
 /src/Algorithms.Benchmark/obj
 *.txt
 *.log
+/src/Algorithms.Benchmark/BenchmarkDotNet.Artifacts
+/src/DataStrutures/obj
