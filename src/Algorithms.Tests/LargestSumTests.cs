@@ -8,13 +8,17 @@ namespace Algorithms.Tests
        
         private ILargestSum NewLargestSum(Type iLargestSumConcreteType, int[][] matrix)
         {
-            IObjectFactory? instance = Activator.CreateInstance(iLargestSumConcreteType) as IObjectFactory;
-            if (instance == null) { throw new Exception("Invalid Type"); }
-            return instance.New(matrix);
+            return Activator.CreateInstance(iLargestSumConcreteType) is IObjectFactory instance
+                ? instance.New(matrix)
+                : throw new Exception("Invalid Type");
         }
 
         [TestCase(typeof(MaxDiagonalBruteForceBuilder))]
         [TestCase(typeof(MaxDiagonal3LoopsBuilder))]
+        [TestCase(typeof(MaxDiagonalConvertingMatrixToOrderedListBuilder))]
+        [TestCase(typeof(MaxDiagonalConvertingMatrixToArrayBuilder))]
+        [TestCase(typeof(MaxDiagonalTwoLargestNumbersBuilder))]
+        
         public void MaxDiagonalSum_MatrixWithPositiveNumbers_ReturnsCorrectSum(Type iLargestSumConcreteType)
         {
             // Arrange
@@ -36,6 +40,9 @@ namespace Algorithms.Tests
 
         [TestCase(typeof(MaxDiagonalBruteForceBuilder))]
         [TestCase(typeof(MaxDiagonal3LoopsBuilder))]
+        [TestCase(typeof(MaxDiagonalConvertingMatrixToOrderedListBuilder))]
+        [TestCase(typeof(MaxDiagonalConvertingMatrixToArrayBuilder))]
+        [TestCase(typeof(MaxDiagonalTwoLargestNumbersBuilder))]
         public void MaxDiagonalSum_MatrixWithNegativeNumbers_ReturnsCorrectSum(Type iLargestSumConcreteType)
         {
             // Arrange
@@ -57,6 +64,9 @@ namespace Algorithms.Tests
 
         [TestCase(typeof(MaxDiagonalBruteForceBuilder))]
         [TestCase(typeof(MaxDiagonal3LoopsBuilder))]
+        [TestCase(typeof(MaxDiagonalConvertingMatrixToOrderedListBuilder))]
+        [TestCase(typeof(MaxDiagonalConvertingMatrixToArrayBuilder))]
+        [TestCase(typeof(MaxDiagonalTwoLargestNumbersBuilder))]
         public void MaxDiagonalSum_MatrixWithMixedNumbers_ReturnsCorrectSum(Type iLargestSumConcreteType)
         {
             // Arrange
@@ -78,6 +88,9 @@ namespace Algorithms.Tests
 
         [TestCase(typeof(MaxDiagonalBruteForceBuilder))]
         [TestCase(typeof(MaxDiagonal3LoopsBuilder))]
+        [TestCase(typeof(MaxDiagonalConvertingMatrixToOrderedListBuilder))]
+        [TestCase(typeof(MaxDiagonalConvertingMatrixToArrayBuilder))]
+        [TestCase(typeof(MaxDiagonalTwoLargestNumbersBuilder))]
         public void MaxDiagonalSum_MatrixWithZeroes_ReturnsZero(Type iLargestSumConcreteType)
         {
             // Arrange
@@ -99,6 +112,9 @@ namespace Algorithms.Tests
 
         [TestCase(typeof(MaxDiagonalBruteForceBuilder))]
         [TestCase(typeof(MaxDiagonal3LoopsBuilder))]
+        [TestCase(typeof(MaxDiagonalConvertingMatrixToOrderedListBuilder))]
+        [TestCase(typeof(MaxDiagonalConvertingMatrixToArrayBuilder))]
+        [TestCase(typeof(MaxDiagonalTwoLargestNumbersBuilder))]
         public void MaxDiagonalSum_MatrixWithSingleRow_ThrowsArgumentEx(Type iLargestSumConcreteType)
         {
             Assert.Throws<ArgumentException>(() => NewLargestSum(iLargestSumConcreteType, [[1, 2, 3]]), "Invalid matrix");
@@ -108,6 +124,9 @@ namespace Algorithms.Tests
 
         [TestCase(typeof(MaxDiagonalBruteForceBuilder))]
         [TestCase(typeof(MaxDiagonal3LoopsBuilder))]
+        [TestCase(typeof(MaxDiagonalConvertingMatrixToOrderedListBuilder))]
+        [TestCase(typeof(MaxDiagonalConvertingMatrixToArrayBuilder))]
+        [TestCase(typeof(MaxDiagonalTwoLargestNumbersBuilder))]
         public void MaxDiagonalSum_MatrixWithDifferentRowLengths_ReturnsCorrectSum(Type iLargestSumConcreteType)
         {
             // Arrange
@@ -115,7 +134,8 @@ namespace Algorithms.Tests
             [
                 [1, 2, 3],
                 [4, 5],
-                [6, 7, 8, 9]
+                [6, 7, 8, 9],
+                
             ];
             ILargestSum maxDiagonal = NewLargestSum(iLargestSumConcreteType, matrix);
 

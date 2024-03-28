@@ -14,7 +14,6 @@ public class LargestSum
     public LargestSum(TextWriter console)
     {
         this.console = console ?? throw new ArgumentNullException(nameof(console));
-        ;
     }
 
     int[][] matrix = new int[0][];
@@ -25,17 +24,17 @@ public class LargestSum
     {
         Random r = new();
 
-        int ilength = r.Next(5, 10);
+        int ilength = r.Next(100, 200);
         matrix = new int[ilength][];
         for (int i = 0; i < ilength; i++)
         {
-            int jlenght = r.Next(5, 10);
+            int jlenght = r.Next(100, 200);
             matrix[i] = new int[jlenght];
             console?.Write("[");
             for (int j = 0; j < jlenght; j++)
             {
                 if (j > 0) console?.Write(",");
-                matrix[i][j] = r.Next(-100, 100);
+                matrix[i][j] = r.Next(-500, 5000);
                 console?.Write(matrix[i][j].ToString().PadLeft(3, ' '));
             }
             console?.WriteLine("]");
@@ -56,4 +55,26 @@ public class LargestSum
         ILargestSum maxDiagonal = new MaxDiagonal3Loops(matrix);
         return maxDiagonal.MaxDiagonalSum().sum;
     }
+
+    [Benchmark]
+    public int MaxDiagonalConvertingMatrixToList()
+    {
+        ILargestSum maxDiagonal = new MaxDiagonalConvertingMatrixToArray(matrix);
+        return maxDiagonal.MaxDiagonalSum().sum;
+    }
+
+    [Benchmark]
+    public int MaxDiagonalConvertingMatrixToOrderedList()
+    {
+        ILargestSum maxDiagonal = new MaxDiagonalConvertingMatrixToOrderedList(matrix);
+        return maxDiagonal.MaxDiagonalSum().sum;
+    }
+
+    [Benchmark]
+    public int MaxDiagonalTwoLargestNumbers()
+    {
+        ILargestSum maxDiagonal = new MaxDiagonalTwoLargestNumbers(matrix);
+        return maxDiagonal.MaxDiagonalSum().sum;
+    }
+    
 }

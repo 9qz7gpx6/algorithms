@@ -8,13 +8,6 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        using (var file = File.CreateText($"{DateTime.Now.Ticks}.txt"))
-        {
-            LargestSum largestSum = new LargestSum(file);
-            largestSum.Setup();
-            file.Write("Largest: ");
-            file.Write(largestSum.MaxDiagonalSumBruteForce());
-        }
 
         var summary = BenchmarkRunner.Run<LargestSum>();
     }
