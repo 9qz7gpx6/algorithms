@@ -7,7 +7,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Algorithms", "src\Algorithm
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Algorithms.Tests", "src\Algorithms.Tests\Algorithms.Tests.csproj", "{EFD3C1BE-C588-4A50-A59D-513AD1898C48}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms.Benchmark", "src\Algorithms.Benchmark\Algorithms.Benchmark.csproj", "{EC5D1B20-E8B3-4291-A851-34D5F6D042CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Algorithms.Benchmark", "src\Algorithms.Benchmark\Algorithms.Benchmark.csproj", "{EC5D1B20-E8B3-4291-A851-34D5F6D042CA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution items", "solution items", "{00C38965-CE0A-4FAC-A32E-E8AFAA06E0BD}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BenchmarkDotNet.Artifacts.results", "BenchmarkDotNet.Artifacts.results", "{9980B3FC-F431-48A7-A9ED-E117CF2C3D6D}"
+	ProjectSection(SolutionItems) = preProject
+		BenchmarkDotNet.Artifacts\results\LargestSum-report-github.md = BenchmarkDotNet.Artifacts\results\LargestSum-report-github.md
+		BenchmarkDotNet.Artifacts\results\LargestSum-report.csv = BenchmarkDotNet.Artifacts\results\LargestSum-report.csv
+		BenchmarkDotNet.Artifacts\results\LargestSum-report.html = BenchmarkDotNet.Artifacts\results\LargestSum-report.html
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,6 +42,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9980B3FC-F431-48A7-A9ED-E117CF2C3D6D} = {00C38965-CE0A-4FAC-A32E-E8AFAA06E0BD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {11A0CE03-7267-46BA-8673-85298F67105D}
