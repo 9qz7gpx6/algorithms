@@ -24,3 +24,4 @@
 *.log
 /src/Algorithms.Benchmark/BenchmarkDotNet.Artifacts
 /src/DataStrutures/obj
+/BenchmarkDotNet.Artifacts/results
