@@ -25,7 +25,7 @@ namespace Algorithms.LargestSum
 
         public (int sum, MatrixPosition matrixPosition1, MatrixPosition matrixPosition2) MaxDiagonalSum()
         {
-            OrderedList list = [];
+            OrderedList<MatrixPosition> list = [];
 
             for (int i = 0; i < _matrix.Length; i++)
             {
@@ -37,10 +37,17 @@ namespace Algorithms.LargestSum
 
             MatrixPosition f1, f2;
             f1 = list[0];
-            f2 = list.NextAfter(f1,0) ?? throw new Exception("Element not found");
+            f2 = NextAfter(list,f1, 0) ?? throw new Exception("Element not found");
 
             return (f1.Value+f2.Value, f1, f2);
 
+        }
+
+        internal MatrixPosition? NextAfter(IList<MatrixPosition> list, MatrixPosition f1, int position = 0)
+        {
+            int next = position;
+            do next++; while (next < list.Count && !list[next].IsDiagonalTo(f1));
+            return list[next];
         }
 
 

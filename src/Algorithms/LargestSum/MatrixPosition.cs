@@ -2,7 +2,7 @@
 
 namespace Algorithms.LargestSum
 {
-    public struct MatrixPosition
+    public struct MatrixPosition:IComparable<MatrixPosition>
     {
         public MatrixPosition(int line, int column, int value)
         {
@@ -21,6 +21,14 @@ namespace Algorithms.LargestSum
         public bool IsDiagonalTo(MatrixPosition f1)
         {
             return Line != f1.Line && Column != f1.Column;
+        }
+
+
+        public readonly int CompareTo(MatrixPosition other)
+        {
+            if (this.Value == other.Value) return 0;
+            if (this.Value > other.Value) return 1;
+            return -1;
         }
     }
 }

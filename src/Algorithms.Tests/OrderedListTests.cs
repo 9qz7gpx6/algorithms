@@ -33,7 +33,7 @@ namespace Algorithms.Tests
             int expectedLentgh = list.Count + 1;
             int position = 0;
 
-            position = OrderedListTest.FindPositionTest(value, list);
+            position = OrderedListTest.FindPositionTest(new MatrixPosition(0,1, value), list);
             MatrixPosition matrixPosition = new(1, 2, value);
             list.Insert(position, matrixPosition);
             Assert.Multiple(() =>
@@ -45,10 +45,10 @@ namespace Algorithms.Tests
         }
     }
 
-    internal class OrderedListTest:OrderedList
+    internal class OrderedListTest:OrderedList<MatrixPosition>
     {
 
-        public static int FindPositionTest(int newElement, IList<MatrixPosition> list) {
+        public static int FindPositionTest(MatrixPosition newElement, IList<MatrixPosition> list) {
 
             return FindPosition(newElement, list);
         }
